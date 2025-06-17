@@ -1,0 +1,5 @@
+# Ignore dataset folders and files
+chest_xray/
+chest_xray_3class/
+*.zip
+__pycache__/

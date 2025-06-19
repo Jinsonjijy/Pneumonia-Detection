@@ -3,3 +3,4 @@ chest_xray/
 chest_xray_3class/
 *.zip
 __pycache__/
+venv/

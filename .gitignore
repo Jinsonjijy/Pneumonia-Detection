@@ -4,4 +4,4 @@ chest_xray_3class/
 *.zip
 __pycache__/
 venv/
-pneumonia_model.h5/
+pneumonia_model.h5

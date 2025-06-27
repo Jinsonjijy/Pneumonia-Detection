@@ -2,6 +2,12 @@ from load_data import train_generator, val_generator, test_generator
 from keras.models import Sequential 
 from keras.layers import Conv2D,MaxPooling2D,Dropout,Dense,Flatten
 # we are building the cnn model 
+from keras.callbacks import EarlyStopping
+early_stop = EarlyStopping(
+    monitor='val_loss',
+    patience=3,
+    restore_best_weights=True
+)
 model=Sequential([
     Conv2D(32,(3,3),activation="relu",input_shape=(150,150,3)),
     MaxPooling2D(pool_size=(2,2)),
@@ -27,8 +33,9 @@ model.summary()# just for see the structure of the model
 #next we are training the mode
 history=model.fit(
     train_generator,
-    epochs=10,
-    validation_data=val_generator
+    epochs=30,
+    validation_data=val_generator,
+    callbacks=[early_stop]
 
 )
 test_loss, test_accuracy = model.evaluate(test_generator)

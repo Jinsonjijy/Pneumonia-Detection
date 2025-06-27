@@ -15,7 +15,8 @@ train_datagen = ImageDataGenerator(
     rescale=1./255,              # Normalize pixel values
     rotation_range=15,           # Random rotation for making my model more powerflul
     zoom_range=0.2,              # Random zoom
-    horizontal_flip=True         # Random horizontal flip
+    horizontal_flip=True,        # Random horizontal flip
+    shear_range=0.2
 )
 # we also have to rescale the pixel value of test and validation input 
 val_datagen=ImageDataGenerator(rescale=1./255)
@@ -24,7 +25,8 @@ train_generator=train_datagen.flow_from_directory(
     train_path,
     target_size=(150,150),
     batch_size=32,
-    class_mode="categorical"
+    class_mode="categorical",
+    shuffle=True
 )
 val_generator=val_datagen.flow_from_directory(
     val_path,
